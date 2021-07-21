@@ -1,0 +1,5 @@
+TEST const 1 warehouse
+------------------------ 48 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(302780),agg_persist_throughput(302780),avg_latency_ms(0.150597),avg_persist_latency_ms(0),agg_abort_throughput(8887.15),agg_abort_rate(0.0285148),0

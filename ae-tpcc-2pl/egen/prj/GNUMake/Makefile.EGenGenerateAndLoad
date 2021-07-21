@@ -1,0 +1,139 @@
+ifndef EGEN_GENERATE_AND_LOAD_MAKEFILE_INCLUDED
+EGEN_GENERATE_AND_LOAD_MAKEFILE_INCLUDED := true
+
+#
+# EGenGenerateAndLoad Library Makefile - Include File
+#
+# This file is used to build the EGenGenerateAndLoad Library. It is intended to
+# be included in another makefile that provides the required infrastructure
+# as outlined below.
+#
+
+################################################################################
+#
+# Required Infrastructure
+#
+# EGenGenerateAndLoad_ROOT	:=	{relative location of EGenGenerateAndLoad directory}
+#				NOTE: based on directory where the including 
+#				makefile is located
+#
+# CXX			:=	{your C++ compiler}
+# CPPFLAGS		:=	{your C PreProcessor flags}
+# DEPFLAGS		:=	{your flag to generate dependency info}
+# CXXFLAGS		:=	{your C++ compiler flags}
+# LDFLAGS		:=	{your linker flags}
+# AR			:=	{your archive/library maintainer}
+# ARFLAGS		:=	{your archiver flags}
+# RM			:=	{your command to remove a file}
+#
+################################################################################
+
+#
+# PORTABILITY NOTES
+# This project makes use of "standardized" printf/scanf format specifiers
+# and constant declaration macros which are typically defined in
+# <inttypes.h> on Un*x-like platforms.  In order to get this project to
+# compile on some platforms, it may be neccessary to set one (or
+# both) of -D__STDC_FORMAT_MACROS and -D__STDC_CONSTANT_MACROS.
+#
+
+#
+# Project layout
+#
+EGenGenerateAndLoad_PRJ	:= $(EGenGenerateAndLoad_ROOT)/prj
+EGenGenerateAndLoad_INC	:= $(EGenGenerateAndLoad_ROOT)/inc
+EGenGenerateAndLoad_SRC	:= $(EGenGenerateAndLoad_ROOT)/src
+EGenGenerateAndLoad_OBJ	:= $(EGenGenerateAndLoad_ROOT)/obj
+EGenGenerateAndLoad_LIB	:= $(EGenGenerateAndLoad_ROOT)/lib
+EGenGenerateAndLoad_BIN	:= $(EGenGenerateAndLoad_ROOT)/bin
+
+#
+# File-type based search paths
+#
+vpath	%.h	$(EGenGenerateAndLoad_INC)
+vpath	%.cpp	$(EGenGenerateAndLoad_SRC)
+vpath	%.o	$(EGenGenerateAndLoad_OBJ)
+vpath	%.d	$(EGenGenerateAndLoad_OBJ)
+vpath	%.a	$(EGenGenerateAndLoad_LIB)
+
+#
+# Project components
+#
+EGenGenerateAndLoadSrcsNames	:=	\
+				EGenGenerateAndLoad.cpp
+
+EGenGenerateAndLoadSrcs	:=	$(addprefix \
+				$(EGenGenerateAndLoad_SRC)/, \
+				$(EGenGenerateAndLoadSrcsNames))
+
+EGenGenerateAndLoadDepsNames	:=	$(EGenGenerateAndLoadSrcsNames:.cpp=.d)
+
+EGenGenerateAndLoadDeps	:=	$(addprefix \
+				$(EGenGenerateAndLoad_OBJ)/, \
+				$(EGenGenerateAndLoadDepsNames))
+
+EGenGenerateAndLoadObjsNames	:=	$(EGenGenerateAndLoadSrcsNames:.cpp=.o)
+
+EGenGenerateAndLoadObjs	:=	$(addprefix \
+				$(EGenGenerateAndLoad_OBJ)/, \
+				$(EGenGenerateAndLoadObjsNames))
+
+EGenGenerateAndLoadLibName	:=	EGenGenerateAndLoad
+
+EGenGenerateAndLoadLib	:=	$(addprefix \
+				$(EGenGenerateAndLoad_LIB)/lib, \
+				$(EGenGenerateAndLoadLibName).a)
+
+EGenGenerateAndLoadAll	:=	$(EGenGenerateAndLoadTargetModifier)all
+EGenGenerateAndLoadClean	:=	$(EGenGenerateAndLoadTargetModifier)clean
+
+#
+# Automatically track dependencies
+#
+$(EGenGenerateAndLoad_OBJ)/%.d : $(EGenGenerateAndLoad_SRC)/%.cpp
+	@set -e; rm -f $@; \
+	(cd $(EGenGenerateAndLoad_PRJ); \
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) ../src/$(notdir $<) \
+		-I $(EGenGenerateAndLoad_INC) \
+		> ../obj/$(notdir $@).$$$$; \
+	); \
+	sed 's,\($(basename $(notdir $*))\).o[ :]*,\1.o $(notdir $@) : ,g' \
+		< $@.$$$$ > $@; \
+	rm -f $@.$$$$; \
+	echo -e \\t$$\(CXX\) -c $$\(CPPFLAGS\) $$\(CXXFLAGS\) \
+		-I $$\(EGenGenerateAndLoad_INC\) \
+		$$\< -o $$\(EGenGenerateAndLoad_OBJ\)/\$$\@ >> $@
+
+#
+# Default goal
+#
+$(EGenGenerateAndLoadAll)	:	$(EGenGenerateAndLoadLib)
+
+#
+# Library targets
+#
+EGenGenerateAndLoadLib	:	$(EGenGenerateAndLoadLib)
+
+$(EGenGenerateAndLoadLib)	: \
+							EGenUtilitiesLib \
+							EGenInputFilesLib \
+							EGenLoggerLib \
+							EGenTablesLib \
+							$(EGenGenerateAndLoadObjsNames)
+	$(AR) $(ARFLAGS) \
+		$(EGenGenerateAndLoadLib) $(EGenGenerateAndLoadObjs)
+
+#
+# Utility targets
+#
+$(EGenGenerateAndLoadClean) :
+	$(RM) $(EGenGenerateAndLoadDeps); \
+	$(RM) $(EGenGenerateAndLoadObjs); \
+	$(RM) $(EGenGenerateAndLoadLib)
+
+#
+# Dependency and object targets
+#
+include $(EGenGenerateAndLoadDeps)
+
+endif #EGEN_GENERATE_AND_LOAD_MAKEFILE_INCLUDED

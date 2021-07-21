@@ -1,0 +1,139 @@
+ifndef EGEN_DRIVER_DM_MAKEFILE_INCLUDED
+EGEN_DRIVER_DM_MAKEFILE_INCLUDED := true
+
+#
+# EGenDriverDM Library Makefile - Include File
+#
+# This file is used to build the EGenDriverDM Library. It is intended to
+# be included in another makefile that provides the required infrastructure
+# as outlined below.
+#
+
+################################################################################
+#
+# Required Infrastructure
+#
+# EGenDriverDM_ROOT	:=	{relative location of EGenDriverDM directory}
+#				NOTE: based on directory where the including 
+#				makefile is located
+#
+# CXX			:=	{your C++ compiler}
+# CPPFLAGS		:=	{your C PreProcessor flags}
+# DEPFLAGS		:=	{your flag to generate dependency info}
+# CXXFLAGS		:=	{your C++ compiler flags}
+# LDFLAGS		:=	{your linker flags}
+# AR			:=	{your archive/library maintainer}
+# ARFLAGS		:=	{your archiver flags}
+# RM			:=	{your command to remove a file}
+#
+################################################################################
+
+#
+# PORTABILITY NOTES
+# This project makes use of "standardized" printf/scanf format specifiers
+# and constant declaration macros which are typically defined in
+# <inttypes.h> on Un*x-like platforms.  In order to get this project to
+# compile on some platforms, it may be neccessary to set one (or
+# both) of -D__STDC_FORMAT_MACROS and -D__STDC_CONSTANT_MACROS.
+#
+
+#
+# Project layout
+#
+EGenDriverDM_PRJ	:= $(EGenDriverDM_ROOT)/prj
+EGenDriverDM_INC	:= $(EGenDriverDM_ROOT)/inc
+EGenDriverDM_SRC	:= $(EGenDriverDM_ROOT)/src
+EGenDriverDM_OBJ	:= $(EGenDriverDM_ROOT)/obj
+EGenDriverDM_LIB	:= $(EGenDriverDM_ROOT)/lib
+EGenDriverDM_BIN	:= $(EGenDriverDM_ROOT)/bin
+
+#
+# File-type based search paths
+#
+vpath	%.h	$(EGenDriverDM_INC)
+vpath	%.cpp	$(EGenDriverDM_SRC)
+vpath	%.o	$(EGenDriverDM_OBJ)
+vpath	%.d	$(EGenDriverDM_OBJ)
+vpath	%.a	$(EGenDriverDM_LIB)
+
+#
+# Project components
+#
+EGenDriverDMSrcsNames	:=	\
+				DM.cpp
+
+EGenDriverDMSrcs	:=	$(addprefix \
+				$(EGenDriverDM_SRC)/, \
+				$(EGenDriverDMSrcsNames))
+
+EGenDriverDMDepsNames	:=	$(EGenDriverDMSrcsNames:.cpp=.d)
+
+EGenDriverDMDeps	:=	$(addprefix \
+				$(EGenDriverDM_OBJ)/, \
+				$(EGenDriverDMDepsNames))
+
+EGenDriverDMObjsNames	:=	$(EGenDriverDMSrcsNames:.cpp=.o)
+
+EGenDriverDMObjs	:=	$(addprefix \
+				$(EGenDriverDM_OBJ)/, \
+				$(EGenDriverDMObjsNames))
+
+EGenDriverDMLibName	:=	EGenDriverDM
+
+EGenDriverDMLib	:=	$(addprefix \
+				$(EGenDriverDM_LIB)/lib, \
+				$(EGenDriverDMLibName).a)
+
+EGenDriverDMAll	:=	$(EGenDriverDMTargetModifier)all
+EGenDriverDMClean	:=	$(EGenDriverDMTargetModifier)clean
+
+#
+# Automatically track dependencies
+#
+$(EGenDriverDM_OBJ)/%.d : $(EGenDriverDM_SRC)/%.cpp
+	@set -e; rm -f $@; \
+	(cd $(EGenDriverDM_PRJ); \
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) ../src/$(notdir $<) \
+		-I $(EGenDriverDM_INC) \
+		> ../obj/$(notdir $@).$$$$; \
+	); \
+	sed 's,\($(basename $(notdir $*))\).o[ :]*,\1.o $(notdir $@) : ,g' \
+		< $@.$$$$ > $@; \
+	rm -f $@.$$$$; \
+	echo -e \\t$$\(CXX\) -c $$\(CPPFLAGS\) $$\(CXXFLAGS\) \
+		-I $$\(EGenDriverDM_INC\) \
+		$$\< -o $$\(EGenDriverDM_OBJ\)/\$$\@ >> $@
+
+#
+# Default goal
+#
+$(EGenDriverDMAll)	:	$(EGenDriverDMLib)
+
+#
+# Library targets
+#
+EGenDriverDMLib	:	$(EGenDriverDMLib)
+
+$(EGenDriverDMLib)	: \
+					EGenUtilitiesLib \
+					EGenInputFilesLib \
+					EGenLoggerLib \
+					EGenTablesLib \
+					$(EGenDriverDMObjsNames)
+	$(AR) $(ARFLAGS) \
+		$(EGenDriverDMLib) $(EGenDriverDMObjs)
+
+#
+# Utility targets
+#
+$(EGenDriverDMClean) :
+	$(RM) $(EGenDriverDMDeps); \
+	$(RM) $(EGenDriverDMObjs); \
+	$(RM) $(EGenDriverDMLib)
+
+#
+# Dependency and object targets
+#
+include $(EGenDriverDMDeps)
+
+endif #EGEN_DRIVER_DM_MAKEFILE_INCLUDED

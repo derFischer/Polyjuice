@@ -1,0 +1,133 @@
+ifndef EGEN_INPUT_FILES_TESTER_MAKEFILE_INCLUDED
+EGEN_INPUT_FILES_TESTER_MAKEFILE_INCLUDED := true
+
+#
+# EGenInputFilesTester Library Makefile - Include File
+#
+# This file is used to build the EGenInputFilesTester Library. It is intended to
+# be included in another makefile that provides the required infrastructure
+# as outlined below.
+#
+
+################################################################################
+#
+# Redquired Infrastructure
+#
+# EGenInputFilesTester_ROOT	:=	{relative location of Test directory}
+#				NOTE: based on directory where the including 
+#				makefile is located
+#
+# CXX			:=	{your C++ compiler}
+# CPPFLAGS		:=	{your C PreProcessor flags}
+# DEPFLAGS		:=	{your flag to generate dependency info}
+# CXXFLAGS		:=	{your C++ compiler flags}
+# LDFLAGS		:=	{your linker flags}
+# AR			:=	{your archive/library maintainer}
+# ARFLAGS		:=	{your archiver flags}
+# RM			:=	{your command to remove a file}
+#
+################################################################################
+
+#
+# Project layout
+#
+EGenInputFilesTester_PRJ	:= $(EGenInputFilesTester_ROOT)/prj
+EGenInputFilesTester_INC	:= $(EGenInputFilesTester_ROOT)/inc
+EGenInputFilesTester_SRC	:= $(EGenInputFilesTester_ROOT)/src
+EGenInputFilesTester_OBJ	:= $(EGenInputFilesTester_ROOT)/obj
+EGenInputFilesTester_LIB	:= $(EGenInputFilesTester_ROOT)/lib
+EGenInputFilesTester_BIN	:= $(EGenInputFilesTester_ROOT)/bin
+
+#
+# File-type based search paths
+#
+vpath	%.h	$(EGenInputFilesTester_INC)
+vpath	%.cpp	$(EGenInputFilesTester_SRC)
+vpath	%.o	$(EGenInputFilesTester_OBJ)
+vpath	%.d	$(EGenInputFilesTester_OBJ)
+vpath	%.a	$(EGenInputFilesTester_LIB)
+
+#
+# Project components
+#
+EGenInputFilesTesterSrcsNames	:=	EGenInputFilesTester.cpp
+
+EGenInputFilesTesterSrcs	:=	$(addprefix \
+				$(EGenInputFilesTester_SRC)/, \
+				$(EGenInputFilesTesterSrcsNames))
+
+EGenInputFilesTesterDepsNames	:=	$(EGenInputFilesTesterSrcsNames:.cpp=.d)
+
+EGenInputFilesTesterDeps	:=	$(addprefix \
+				$(EGenInputFilesTester_OBJ)/, \
+				$(EGenInputFilesTesterDepsNames))
+
+EGenInputFilesTesterObjsNames	:=	$(EGenInputFilesTesterSrcsNames:.cpp=.o)
+
+EGenInputFilesTesterObjs	:=	$(addprefix \
+				$(EGenInputFilesTester_OBJ)/, \
+				$(EGenInputFilesTesterObjsNames))
+
+EGenInputFilesTesterBinName	:=	EGenInputFilesTester
+
+EGenInputFilesTesterBin	:=	$(addprefix \
+				$(EGenInputFilesTester_BIN)/, \
+				$(EGenInputFilesTesterBinName))
+
+EGenInputFilesTesterAll	:=	$(EGenInputFilesTesterTargetModifier)all
+EGenInputFilesTesterClean	:=	$(EGenInputFilesTesterTargetModifier)clean
+
+#
+# Automatically track dependencies
+#
+$(EGenInputFilesTester_OBJ)/%.d : $(EGenInputFilesTester_SRC)/%.cpp
+	@set -e; rm -f $@; \
+	(cd $(EGenInputFilesTester_PRJ); \
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) ../src/$(notdir $<) \
+		> ../obj/$(notdir $@).$$$$; \
+	); \
+	sed 's,\($(basename $(notdir $*))\).o[ :]*,\1.o $(notdir $@) : ,g' \
+		< $@.$$$$ > $@; \
+	rm -f $@.$$$$; \
+	echo -e \\t$$\(CXX\) -c $$\(CPPFLAGS\) $$\(CXXFLAGS\) \
+		$$\< -o $$\(EGenInputFilesTester_OBJ\)/\$$\@ >> $@
+
+#
+# Default goal
+#
+$(EGenInputFilesTesterAll)	:	$(EGenInputFilesTesterBin)
+
+#
+# Binary targets
+#
+EGenInputFilesTesterBin	:	$(EGenInputFilesTesterBin)
+
+$(EGenInputFilesTesterBin)	:	$(EGenInputFilesTesterObjsNames) \
+					EGenInputFilesLib \
+					EGenTestCommonLib \
+					EGenInputFilesTestLib
+	$(CXX) $(LDFLAGS) \
+		-L $(EGenInputFilesTest_LIB) \
+		-L $(EGenTestCommon_LIB) \
+		-L $(EGenInputFiles_LIB) \
+		$(EGenInputFilesTesterObjs) \
+		-l$(EGenInputFilesTestLibName) \
+		-l$(EGenTestCommonLibName) \
+		-l$(EGenInputFilesLibName) \
+		-l$(BOOST_UNIT_TEST_LIB) \
+		-o $@
+
+#
+# Utility targets
+#
+$(EGenInputFilesTesterClean) :
+	$(RM) $(EGenInputFilesTesterDeps); \
+	$(RM) $(EGenInputFilesTesterObjs); \
+	$(RM) $(EGenInputFilesTesterBin)
+
+#
+# Dependency and object targets
+#
+include $(EGenInputFilesTesterDeps)
+
+endif #EGEN_INPUT_FILES_TESTER_MAKEFILE_INCLUDED

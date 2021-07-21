@@ -1,0 +1,120 @@
+TEST const 1 warehouse
+------------------------ 48 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(297503),agg_persist_throughput(297503),avg_latency_ms(0.152873),avg_persist_latency_ms(0),agg_abort_throughput(9081.8),agg_abort_rate(0.0296225),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(300429),agg_persist_throughput(300429),avg_latency_ms(0.151188),avg_persist_latency_ms(0),agg_abort_throughput(9371.71),agg_abort_rate(0.0302507),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(301361),agg_persist_throughput(301361),avg_latency_ms(0.150707),avg_persist_latency_ms(0),agg_abort_throughput(9366.38),agg_abort_rate(0.0301434),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(292728),agg_persist_throughput(292728),avg_latency_ms(0.155548),avg_persist_latency_ms(0),agg_abort_throughput(8780.52),agg_abort_rate(0.0291219),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(287423),agg_persist_throughput(287423),avg_latency_ms(0.158334),avg_persist_latency_ms(0),agg_abort_throughput(8672.57),agg_abort_rate(0.0292897),0
+------------------------ 48 thread  2 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(456537),agg_persist_throughput(456537),avg_latency_ms(0.0993891),avg_persist_latency_ms(0),agg_abort_throughput(3893.28),agg_abort_rate(0.00845573),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(467829),agg_persist_throughput(467829),avg_latency_ms(0.0993519),avg_persist_latency_ms(0),agg_abort_throughput(3950.31),agg_abort_rate(0.00837322),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(470329),agg_persist_throughput(470329),avg_latency_ms(0.0982127),avg_persist_latency_ms(0),agg_abort_throughput(4136.11),agg_abort_rate(0.00871742),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(474021),agg_persist_throughput(474021),avg_latency_ms(0.0988664),avg_persist_latency_ms(0),agg_abort_throughput(4100),agg_abort_rate(0.00857523),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(469080),agg_persist_throughput(469080),avg_latency_ms(0.0991528),avg_persist_latency_ms(0),agg_abort_throughput(4036.94),agg_abort_rate(0.00853264),0
+------------------------ 48 thread  4 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.29071e+06),agg_persist_throughput(1.29071e+06),avg_latency_ms(0.0358507),avg_persist_latency_ms(0),agg_abort_throughput(22230),agg_abort_rate(0.0169315),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.28458e+06),agg_persist_throughput(1.28458e+06),avg_latency_ms(0.0358397),avg_persist_latency_ms(0),agg_abort_throughput(22462.7),agg_abort_rate(0.0171859),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.29837e+06),agg_persist_throughput(1.29837e+06),avg_latency_ms(0.0356242),avg_persist_latency_ms(0),agg_abort_throughput(22455.2),agg_abort_rate(0.0170008),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.28635e+06),agg_persist_throughput(1.28635e+06),avg_latency_ms(0.0359644),avg_persist_latency_ms(0),agg_abort_throughput(22323.1),agg_abort_rate(0.0170578),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.29619e+06),agg_persist_throughput(1.29619e+06),avg_latency_ms(0.0356238),avg_persist_latency_ms(0),agg_abort_throughput(22102.5),agg_abort_rate(0.0167661),0
+------------------------ 48 thread  8 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.63797e+06),agg_persist_throughput(1.63797e+06),avg_latency_ms(0.0284839),avg_persist_latency_ms(0),agg_abort_throughput(41351.2),agg_abort_rate(0.0246237),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.63609e+06),agg_persist_throughput(1.63609e+06),avg_latency_ms(0.0285256),avg_persist_latency_ms(0),agg_abort_throughput(41267.5),agg_abort_rate(0.0246028),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.63261e+06),agg_persist_throughput(1.63261e+06),avg_latency_ms(0.0285702),avg_persist_latency_ms(0),agg_abort_throughput(41698.4),agg_abort_rate(0.0249048),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.62838e+06),agg_persist_throughput(1.62838e+06),avg_latency_ms(0.0286455),avg_persist_latency_ms(0),agg_abort_throughput(41454.2),agg_abort_rate(0.0248253),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.63736e+06),agg_persist_throughput(1.63736e+06),avg_latency_ms(0.0285036),avg_persist_latency_ms(0),agg_abort_throughput(41269.5),agg_abort_rate(0.0245852),0
+------------------------ 48 thread  12 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.8172e+06),agg_persist_throughput(1.8172e+06),avg_latency_ms(0.0257658),avg_persist_latency_ms(0),agg_abort_throughput(18640.2),agg_abort_rate(0.0101535),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.81845e+06),agg_persist_throughput(1.81845e+06),avg_latency_ms(0.0257437),avg_persist_latency_ms(0),agg_abort_throughput(18697.9),agg_abort_rate(0.0101777),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.82243e+06),agg_persist_throughput(1.82243e+06),avg_latency_ms(0.0257012),avg_persist_latency_ms(0),agg_abort_throughput(18615),agg_abort_rate(0.0101111),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.8159e+06),agg_persist_throughput(1.8159e+06),avg_latency_ms(0.0257825),avg_persist_latency_ms(0),agg_abort_throughput(18713.7),agg_abort_rate(0.0102003),0
+------------------------ 48 thread  16 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.85674e+06),agg_persist_throughput(1.85674e+06),avg_latency_ms(0.0252136),avg_persist_latency_ms(0),agg_abort_throughput(11143.8),agg_abort_rate(0.005966),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.85981e+06),agg_persist_throughput(1.85981e+06),avg_latency_ms(0.0251493),avg_persist_latency_ms(0),agg_abort_throughput(11278.4),agg_abort_rate(0.00602769),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.86906e+06),agg_persist_throughput(1.86906e+06),avg_latency_ms(0.0249931),avg_persist_latency_ms(0),agg_abort_throughput(11342.2),agg_abort_rate(0.00603178),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.86765e+06),agg_persist_throughput(1.86765e+06),avg_latency_ms(0.0250221),avg_persist_latency_ms(0),agg_abort_throughput(11280.2),agg_abort_rate(0.00600353),0
+------------------------ 48 thread  24 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.90286e+06),agg_persist_throughput(1.90286e+06),avg_latency_ms(0.0240628),avg_persist_latency_ms(0),agg_abort_throughput(69155.9),agg_abort_rate(0.0350686),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.91725e+06),agg_persist_throughput(1.91725e+06),avg_latency_ms(0.0238825),avg_persist_latency_ms(0),agg_abort_throughput(69564.5),agg_abort_rate(0.0350131),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.90444e+06),agg_persist_throughput(1.90444e+06),avg_latency_ms(0.0240522),avg_persist_latency_ms(0),agg_abort_throughput(69343.4),agg_abort_rate(0.0351322),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(1.88621e+06),agg_persist_throughput(1.88621e+06),avg_latency_ms(0.0242798),avg_persist_latency_ms(0),agg_abort_throughput(68910.1),agg_abort_rate(0.035246),0
+------------------------ 48 thread  48 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(2.14041e+06),agg_persist_throughput(2.14041e+06),avg_latency_ms(0.0223701),avg_persist_latency_ms(0),agg_abort_throughput(95.1307),agg_abort_rate(4.4443e-05),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(2.141e+06),agg_persist_throughput(2.141e+06),avg_latency_ms(0.0223644),avg_persist_latency_ms(0),agg_abort_throughput(95.2967),agg_abort_rate(4.45085e-05),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(2.15101e+06),agg_persist_throughput(2.15101e+06),avg_latency_ms(0.0222454),avg_persist_latency_ms(0),agg_abort_throughput(95.9637),agg_abort_rate(4.46113e-05),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(2.14368e+06),agg_persist_throughput(2.14368e+06),avg_latency_ms(0.0223349),avg_persist_latency_ms(0),agg_abort_throughput(95.7639),agg_abort_rate(4.46707e-05),0
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(2.15882e+06),agg_persist_throughput(2.15882e+06),avg_latency_ms(0.0221792),avg_persist_latency_ms(0),agg_abort_throughput(97.1976),agg_abort_rate(4.50214e-05),0

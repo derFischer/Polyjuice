@@ -1,0 +1,37 @@
+TEST const 1 warehouse
+------------------------ 1 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(76646.5),agg_persist_throughput(76646.5),avg_latency_ms(0.0130098),avg_persist_latency_ms(0),agg_abort_throughput(0),agg_abort_rate(0),0
+------------------------ 2 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(95817.2),agg_persist_throughput(95817.2),avg_latency_ms(0.0176631),avg_persist_latency_ms(0),agg_abort_throughput(15172.2),agg_abort_rate(0.1367),0
+------------------------ 4 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(150591),agg_persist_throughput(150591),avg_latency_ms(0.0259968),avg_persist_latency_ms(0),agg_abort_throughput(1289.82),agg_abort_rate(0.00849231),0
+------------------------ 8 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(237418),agg_persist_throughput(237418),avg_latency_ms(0.0331229),avg_persist_latency_ms(0),agg_abort_throughput(1608.08),agg_abort_rate(0.00672763),0
+------------------------ 12 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(303642),agg_persist_throughput(303642),avg_latency_ms(0.0385961),avg_persist_latency_ms(0),agg_abort_throughput(3347.46),agg_abort_rate(0.0109042),0
+------------------------ 16 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(320322),agg_persist_throughput(320322),avg_latency_ms(0.0470801),avg_persist_latency_ms(0),agg_abort_throughput(8555.52),agg_abort_rate(0.0260143),0
+------------------------ 24 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(308181),agg_persist_throughput(308181),avg_latency_ms(0.0749061),avg_persist_latency_ms(0),agg_abort_throughput(4092.6),agg_abort_rate(0.0131058),0
+------------------------ 32 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(314307),agg_persist_throughput(314307),avg_latency_ms(0.0971798),avg_persist_latency_ms(0),agg_abort_throughput(5968.09),agg_abort_rate(0.0186342),0
+------------------------ 48 thread  1 wh  --------------------------
+COMMIT_BREAKDOWN 0 0 0 0 0 
+ABORT_BREAKDOWN 0 0 0 0 0 
+RESULT agg_throughput(301364),agg_persist_throughput(301364),avg_latency_ms(0.150987),avg_persist_latency_ms(0),agg_abort_throughput(9030.25),agg_abort_rate(0.0290929),0

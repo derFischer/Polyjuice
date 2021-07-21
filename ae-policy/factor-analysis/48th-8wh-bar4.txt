@@ -1,0 +1,37 @@
+txn buffer size
+4
+txn commit backoff part, 3 lines for retry times [0, 1, >=2] (decrease backoff)
+2 2 2 
+1 2 8 
+8 1 2 
+txn abort backoff part, 3 lines for retry times [0, 1, >=2] (increase backoff)
+8 8 2 
+0 4 4 
+1 4 2 
+normal access
+1 1 0 11 7 8 
+1 0 0 11 7 8 
+0 0 1 11 7 8 
+0 0 0 11 7 8 
+0 0 0 11 7 8 
+0 0 0 11 7 8 
+0 0 0 11 7 8 
+0 0 0 11 7 8 
+1 0 0 11 7 8 
+1 0 0 11 7 8 
+0 1 0 11 7 8 
+1 0 0 11 7 8 
+0 1 0 11 7 8 
+1 1 0 11 7 8 
+0 0 1 11 7 8 
+0 1 1 11 7 8 
+1 0 0 11 7 8 
+0 1 0 11 7 8 
+1 1 0 11 7 8 
+0 1 1 11 7 8 
+0 0 1 11 7 8 
+0 1 0 11 7 8 
+1 1 0 11 7 8 
+1 0 0 11 7 8 
+1 1 0 11 7 8 
+1 0 0 11 7 8 

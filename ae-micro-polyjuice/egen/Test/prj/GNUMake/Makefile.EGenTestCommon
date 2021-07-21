@@ -1,0 +1,122 @@
+ifndef EGEN_TEST_COMMON_MAKEFILE_INCLUDED
+EGEN_TEST_COMMON_MAKEFILE_INCLUDED := true
+
+#
+# EGenTestCommon Library Makefile - Include File
+#
+# This file is used to build the EGenTestCommon Library. It is intended to
+# be included in another makefile that provides the required infrastructure
+# as outlined below.
+#
+
+################################################################################
+#
+# Redquired Infrastructure
+#
+# EGenTestCommon_ROOT	:=	{relative location of Test directory}
+#				NOTE: based on directory where the including 
+#				makefile is located
+#
+# CXX			:=	{your C++ compiler}
+# CPPFLAGS		:=	{your C PreProcessor flags}
+# DEPFLAGS		:=	{your flag to generate dependency info}
+# CXXFLAGS		:=	{your C++ compiler flags}
+# LDFLAGS		:=	{your linker flags}
+# AR			:=	{your archive/library maintainer}
+# ARFLAGS		:=	{your archiver flags}
+# RM			:=	{your command to remove a file}
+#
+################################################################################
+
+#
+# Project layout
+#
+EGenTestCommon_PRJ	:= $(EGenTestCommon_ROOT)/prj
+EGenTestCommon_INC	:= $(EGenTestCommon_ROOT)/inc
+EGenTestCommon_SRC	:= $(EGenTestCommon_ROOT)/src
+EGenTestCommon_OBJ	:= $(EGenTestCommon_ROOT)/obj
+EGenTestCommon_LIB	:= $(EGenTestCommon_ROOT)/lib
+EGenTestCommon_BIN	:= $(EGenTestCommon_ROOT)/bin
+
+#
+# File-type based search paths
+#
+vpath	%.h	$(EGenTestCommon_INC)
+vpath	%.cpp	$(EGenTestCommon_SRC)
+vpath	%.o	$(EGenTestCommon_OBJ)
+vpath	%.d	$(EGenTestCommon_OBJ)
+vpath	%.a	$(EGenTestCommon_LIB)
+
+#
+# Project components
+#
+EGenTestCommonSrcsNames	:=	CharTestTools.cpp \
+				TestUtilities.cpp
+
+EGenTestCommonSrcs	:=	$(addprefix \
+				$(EGenTestCommon_SRC)/, \
+				$(EGenTestCommonSrcsNames))
+
+EGenTestCommonDepsNames	:=	$(EGenTestCommonSrcsNames:.cpp=.d)
+
+EGenTestCommonDeps	:=	$(addprefix \
+				$(EGenTestCommon_OBJ)/, \
+				$(EGenTestCommonDepsNames))
+
+EGenTestCommonObjsNames	:=	$(EGenTestCommonSrcsNames:.cpp=.o)
+
+EGenTestCommonObjs	:=	$(addprefix \
+				$(EGenTestCommon_OBJ)/, \
+				$(EGenTestCommonObjsNames))
+
+EGenTestCommonLibName	:=	EGenTestCommon
+
+EGenTestCommonLib	:=	$(addprefix \
+				$(EGenTestCommon_LIB)/lib, \
+				$(EGenTestCommonLibName).a)
+
+EGenTestCommonAll	:=	$(EGenTestCommonTargetModifier)all
+EGenTestCommonClean	:=	$(EGenTestCommonTargetModifier)clean
+
+#
+# Automatically track dependencies
+#
+$(EGenTestCommon_OBJ)/%.d : $(EGenTestCommon_SRC)/%.cpp
+	@set -e; rm -f $@; \
+	(cd $(EGenTestCommon_PRJ); \
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) ../src/$(notdir $<) \
+		> ../obj/$(notdir $@).$$$$; \
+	); \
+	sed 's,\($(basename $(notdir $*))\).o[ :]*,\1.o $(notdir $@) : ,g' \
+		< $@.$$$$ > $@; \
+	rm -f $@.$$$$; \
+	echo -e \\t$$\(CXX\) -c $$\(CPPFLAGS\) $$\(CXXFLAGS\) \
+		$$\< -o $$\(EGenTestCommon_OBJ\)/\$$\@ >> $@
+
+#
+# Default goal
+#
+$(EGenTestCommonAll)	:	$(EGenTestCommonLib)
+
+#
+# Library targets
+#
+EGenTestCommonLib	:	$(EGenTestCommonLib)
+
+$(EGenTestCommonLib)	:	$(EGenTestCommonObjsNames)
+	$(AR) $(ARFLAGS) $(EGenTestCommonLib) $(EGenTestCommonObjs)
+
+#
+# Utility targets
+#
+$(EGenTestCommonClean) :
+	$(RM) $(EGenTestCommonDeps); \
+	$(RM) $(EGenTestCommonObjs); \
+	$(RM) $(EGenTestCommonLib)
+
+#
+# Dependency and object targets
+#
+include $(EGenTestCommonDeps)
+
+endif #EGEN_TEST_COMMON_MAKEFILE_INCLUDED

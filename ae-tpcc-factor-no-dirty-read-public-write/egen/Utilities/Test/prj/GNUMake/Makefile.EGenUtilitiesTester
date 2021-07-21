@@ -1,0 +1,133 @@
+ifndef EGEN_UTILITIES_TESTER_MAKEFILE_INCLUDED
+EGEN_UTILITIES_TESTER_MAKEFILE_INCLUDED := true
+
+#
+# EGenUtilitiesTester Library Makefile - Include File
+#
+# This file is used to build the EGenUtilitiesTester Library. It is intended to
+# be included in another makefile that provides the required infrastructure
+# as outlined below.
+#
+
+################################################################################
+#
+# Redquired Infrastructure
+#
+# EGenUtilitiesTester_ROOT	:=	{relative location of Test directory}
+#				NOTE: based on directory where the including 
+#				makefile is located
+#
+# CXX			:=	{your C++ compiler}
+# CPPFLAGS		:=	{your C PreProcessor flags}
+# DEPFLAGS		:=	{your flag to generate dependency info}
+# CXXFLAGS		:=	{your C++ compiler flags}
+# LDFLAGS		:=	{your linker flags}
+# AR			:=	{your archive/library maintainer}
+# ARFLAGS		:=	{your archiver flags}
+# RM			:=	{your command to remove a file}
+#
+################################################################################
+
+#
+# Project layout
+#
+EGenUtilitiesTester_PRJ	:= $(EGenUtilitiesTester_ROOT)/prj
+EGenUtilitiesTester_INC	:= $(EGenUtilitiesTester_ROOT)/inc
+EGenUtilitiesTester_SRC	:= $(EGenUtilitiesTester_ROOT)/src
+EGenUtilitiesTester_OBJ	:= $(EGenUtilitiesTester_ROOT)/obj
+EGenUtilitiesTester_LIB	:= $(EGenUtilitiesTester_ROOT)/lib
+EGenUtilitiesTester_BIN	:= $(EGenUtilitiesTester_ROOT)/bin
+
+#
+# File-type based search paths
+#
+vpath	%.h	$(EGenUtilitiesTester_INC)
+vpath	%.cpp	$(EGenUtilitiesTester_SRC)
+vpath	%.o	$(EGenUtilitiesTester_OBJ)
+vpath	%.d	$(EGenUtilitiesTester_OBJ)
+vpath	%.a	$(EGenUtilitiesTester_LIB)
+
+#
+# Project components
+#
+EGenUtilitiesTesterSrcsNames	:=	EGenUtilitiesTester.cpp
+
+EGenUtilitiesTesterSrcs	:=	$(addprefix \
+				$(EGenUtilitiesTester_SRC)/, \
+				$(EGenUtilitiesTesterSrcsNames))
+
+EGenUtilitiesTesterDepsNames	:=	$(EGenUtilitiesTesterSrcsNames:.cpp=.d)
+
+EGenUtilitiesTesterDeps	:=	$(addprefix \
+				$(EGenUtilitiesTester_OBJ)/, \
+				$(EGenUtilitiesTesterDepsNames))
+
+EGenUtilitiesTesterObjsNames	:=	$(EGenUtilitiesTesterSrcsNames:.cpp=.o)
+
+EGenUtilitiesTesterObjs	:=	$(addprefix \
+				$(EGenUtilitiesTester_OBJ)/, \
+				$(EGenUtilitiesTesterObjsNames))
+
+EGenUtilitiesTesterBinName	:=	EGenUtilitiesTester
+
+EGenUtilitiesTesterBin	:=	$(addprefix \
+				$(EGenUtilitiesTester_BIN)/, \
+				$(EGenUtilitiesTesterBinName))
+
+EGenUtilitiesTesterAll	:=	$(EGenUtilitiesTesterTargetModifier)all
+EGenUtilitiesTesterClean	:=	$(EGenUtilitiesTesterTargetModifier)clean
+
+#
+# Automatically track dependencies
+#
+$(EGenUtilitiesTester_OBJ)/%.d : $(EGenUtilitiesTester_SRC)/%.cpp
+	@set -e; rm -f $@; \
+	(cd $(EGenUtilitiesTester_PRJ); \
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) ../src/$(notdir $<) \
+		> ../obj/$(notdir $@).$$$$; \
+	); \
+	sed 's,\($(basename $(notdir $*))\).o[ :]*,\1.o $(notdir $@) : ,g' \
+		< $@.$$$$ > $@; \
+	rm -f $@.$$$$; \
+	echo -e \\t$$\(CXX\) -c $$\(CPPFLAGS\) $$\(CXXFLAGS\) \
+		$$\< -o $$\(EGenUtilitiesTester_OBJ\)/\$$\@ >> $@
+
+#
+# Default goal
+#
+$(EGenUtilitiesTesterAll)	:	$(EGenUtilitiesTesterBin)
+
+#
+# Binary targets
+#
+EGenUtilitiesTesterBin	:	$(EGenUtilitiesTesterBin)
+
+$(EGenUtilitiesTesterBin)	:	$(EGenUtilitiesTesterObjsNames) \
+					EGenUtilitiesLib \
+					EGenTestCommonLib \
+					EGenUtilitiesTestLib
+	$(CXX) $(LDFLAGS) \
+		-L $(EGenUtilitiesTest_LIB) \
+		-L $(EGenTestCommon_LIB) \
+		-L $(EGenUtilities_LIB) \
+		$(EGenUtilitiesTesterObjs) \
+		-l$(EGenUtilitiesTestLibName) \
+		-l$(EGenTestCommonLibName) \
+		-l$(EGenUtilitiesLibName) \
+		-l$(BOOST_UNIT_TEST_LIB) \
+		-o $@
+
+#
+# Utility targets
+#
+$(EGenUtilitiesTesterClean) :
+	$(RM) $(EGenUtilitiesTesterDeps); \
+	$(RM) $(EGenUtilitiesTesterObjs); \
+	$(RM) $(EGenUtilitiesTesterBin)
+
+#
+# Dependency and object targets
+#
+include $(EGenUtilitiesTesterDeps)
+
+endif #EGEN_UTILITIES_TESTER_MAKEFILE_INCLUDED

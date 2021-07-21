@@ -1,0 +1,164 @@
+ifndef EGEN_INPUT_FILES_MAKEFILE_INCLUDED
+EGEN_INPUT_FILES_MAKEFILE_INCLUDED := true
+
+#
+# EGenInputFiles Library Makefile - Include File
+#
+# This file is used to build the EGenInputFiles Library. It is intended to
+# be included in another makefile that provides the required infrastructure
+# as outlined below.
+#
+
+################################################################################
+#
+# Required Infrastructure
+#
+# EGenInputFiles_ROOT	:=	{relative location of InputFiles directory}
+#				NOTE: based on directory where the including 
+#				makefile is located
+#
+# CXX			:=	{your C++ compiler}
+# CPPFLAGS		:=	{your C PreProcessor flags}
+# DEPFLAGS		:=	{your flag to generate dependency info}
+# CXXFLAGS		:=	{your C++ compiler flags}
+# LDFLAGS		:=	{your linker flags}
+# AR			:=	{your archive/library maintainer}
+# ARFLAGS		:=	{your archiver flags}
+# RM			:=	{your command to remove a file}
+#
+################################################################################
+
+#
+# PORTABILITY NOTES
+# This project makes use of "standardized" printf/scanf format specifiers
+# and constant declaration macros which are typically defined in
+# <inttypes.h> on Un*x-like platforms.  In order to get this project to
+# compile on some platforms, it may be neccessary to set one (or
+# both) of -D__STDC_FORMAT_MACROS and -D__STDC_CONSTANT_MACROS.
+#
+
+#
+# Project layout
+#
+EGenInputFiles_PRJ	:= $(EGenInputFiles_ROOT)/prj
+EGenInputFiles_INC	:= $(EGenInputFiles_ROOT)/inc
+EGenInputFiles_SRC	:= $(EGenInputFiles_ROOT)/src
+EGenInputFiles_OBJ	:= $(EGenInputFiles_ROOT)/obj
+EGenInputFiles_LIB	:= $(EGenInputFiles_ROOT)/lib
+EGenInputFiles_BIN	:= $(EGenInputFiles_ROOT)/bin
+
+#
+# File-type based search paths
+#
+vpath	%.h	$(EGenInputFiles_INC)
+vpath	%.cpp	$(EGenInputFiles_SRC)
+vpath	%.o	$(EGenInputFiles_OBJ)
+vpath	%.d	$(EGenInputFiles_OBJ)
+vpath	%.a	$(EGenInputFiles_LIB)
+
+#
+# Project components
+#
+EGenInputFilesSrcsNames	:=	\
+							AreaCodeDataFileRecord.cpp \
+							ChargeDataFileRecord.cpp \
+							CommissionRateDataFileRecord.cpp \
+							CompanyCompetitorDataFileRecord.cpp \
+							CompanyCompetitorFile.cpp \
+							CompanyDataFileRecord.cpp \
+							CompanyFile.cpp \
+							CompanySPRateDataFileRecord.cpp \
+							DataFileManager.cpp \
+							ExchangeDataFileRecord.cpp \
+							FemaleFirstNameDataFileRecord.cpp \
+							IndustryDataFileRecord.cpp \
+							LastNameDataFileRecord.cpp \
+							MaleFirstNameDataFileRecord.cpp \
+							NewsDataFileRecord.cpp \
+							NonTaxableAccountNameDataFileRecord.cpp \
+							SectorDataFileRecord.cpp \
+							SecurityDataFileRecord.cpp \
+							SecurityFile.cpp \
+							StatusTypeDataFileRecord.cpp \
+							StreamSplitter.cpp \
+							StreetNameDataFileRecord.cpp \
+							StreetSuffixDataFileRecord.cpp \
+							StringSplitter.cpp \
+							TaxableAccountNameDataFileRecord.cpp \
+							TaxRateCountryDataFileRecord.cpp \
+							TaxRateDivisionDataFileRecord.cpp \
+							TaxRateFile.cpp \
+							TextFileSplitter.cpp \
+							TradeTypeDataFileRecord.cpp \
+							Utilities.cpp \
+							ZipCodeDataFileRecord.cpp
+
+EGenInputFilesSrcs	:=	$(addprefix \
+				$(EGenInputFiles_SRC)/, \
+				$(EGenInputFilesSrcsNames))
+
+EGenInputFilesDepsNames	:=	$(EGenInputFilesSrcsNames:.cpp=.d)
+
+EGenInputFilesDeps	:=	$(addprefix \
+				$(EGenInputFiles_OBJ)/, \
+				$(EGenInputFilesDepsNames))
+
+EGenInputFilesObjsNames	:=	$(EGenInputFilesSrcsNames:.cpp=.o)
+
+EGenInputFilesObjs	:=	$(addprefix \
+				$(EGenInputFiles_OBJ)/, \
+				$(EGenInputFilesObjsNames))
+
+EGenInputFilesLibName	:=	EGenInputFiles
+
+EGenInputFilesLib	:=	$(addprefix \
+				$(EGenInputFiles_LIB)/lib, \
+				$(EGenInputFilesLibName).a)
+
+EGenInputFilesAll	:=	$(EGenInputFilesTargetModifier)all
+EGenInputFilesClean	:=	$(EGenInputFilesTargetModifier)clean
+
+#
+# Automatically track dependencies
+#
+$(EGenInputFiles_OBJ)/%.d : $(EGenInputFiles_SRC)/%.cpp
+	@set -e; rm -f $@; \
+	(cd $(EGenInputFiles_PRJ); \
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) ../src/$(notdir $<) \
+		-I $(EGenInputFiles_INC) \
+		> ../obj/$(notdir $@).$$$$; \
+	); \
+	sed 's,\($(basename $(notdir $*))\).o[ :]*,\1.o $(notdir $@) : ,g' \
+		< $@.$$$$ > $@; \
+	rm -f $@.$$$$; \
+	echo -e \\t$$\(CXX\) -c $$\(CPPFLAGS\) $$\(CXXFLAGS\) \
+		-I $$\(EGenInputFiles_INC\) \
+		$$\< -o $$\(EGenInputFiles_OBJ\)/\$$\@ >> $@
+
+#
+# Default goal
+#
+$(EGenInputFilesAll)	:	$(EGenInputFilesLib)
+
+#
+# Library targets
+#
+EGenInputFilesLib	:	$(EGenInputFilesLib)
+
+$(EGenInputFilesLib)	:	$(EGenInputFilesObjsNames)
+	$(AR) $(ARFLAGS) $(EGenInputFilesLib) $(EGenInputFilesObjs)
+
+#
+# Utility targets
+#
+$(EGenInputFilesClean) :
+	$(RM) $(EGenInputFilesDeps); \
+	$(RM) $(EGenInputFilesObjs); \
+	$(RM) $(EGenInputFilesLib)
+
+#
+# Dependency and object targets
+#
+include $(EGenInputFilesDeps)
+
+endif #EGEN_INPUT_FILES_MAKEFILE_INCLUDED

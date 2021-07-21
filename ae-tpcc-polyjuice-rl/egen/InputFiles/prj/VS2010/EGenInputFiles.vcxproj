@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\AreaCodeDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\BucketedDataFile.h" />
+    <ClInclude Include="..\..\inc\ChargeDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\CommissionRateDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\CompanyCompetitorDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\CompanyCompetitorFile.h" />
+    <ClInclude Include="..\..\inc\CompanyDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\CompanyFile.h" />
+    <ClInclude Include="..\..\inc\CompanySPRateDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\DataFile.h" />
+    <ClInclude Include="..\..\inc\DataFileManager.h" />
+    <ClInclude Include="..\..\inc\DataFileTypes.h" />
+    <ClInclude Include="..\..\inc\ExchangeDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\FemaleFirstNameDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\IndustryDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\ITaxRateFileRecord.h" />
+    <ClInclude Include="..\..\inc\ITextSplitter.h" />
+    <ClInclude Include="..\..\inc\LastNameDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\MaleFirstNameDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\NewsDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\NonTaxableAccountNameDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\SectorDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\SecurityDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\SecurityFile.h" />
+    <ClInclude Include="..\..\inc\ShrinkToFit.h" />
+    <ClInclude Include="..\..\inc\StatusTypeDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\StreamSplitter.h" />
+    <ClInclude Include="..\..\inc\StreetNameDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\StreetSuffixDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\StringSplitter.h" />
+    <ClInclude Include="..\..\inc\TaxableAccountNameDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\TaxRateCountryDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\TaxRateFile.h" />
+    <ClInclude Include="..\..\inc\TaxRateDivisionDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\TextFileSplitter.h" />
+    <ClInclude Include="..\..\inc\TradeTypeDataFileRecord.h" />
+    <ClInclude Include="..\..\inc\Utilities.h" />
+    <ClInclude Include="..\..\inc\WeightedDataFile.h" />
+    <ClInclude Include="..\..\inc\ZipCodeDataFileRecord.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\AreaCodeDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\ChargeDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\CommissionRateDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\CompanyCompetitorDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\CompanyCompetitorFile.cpp" />
+    <ClCompile Include="..\..\src\CompanyDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\CompanyFile.cpp" />
+    <ClCompile Include="..\..\src\CompanySPRateDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\DataFileManager.cpp" />
+    <ClCompile Include="..\..\src\ExchangeDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\FemaleFirstNameDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\IndustryDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\LastNameDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\MaleFirstNameDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\NewsDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\NonTaxableAccountNameDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\SectorDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\SecurityDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\SecurityFile.cpp" />
+    <ClCompile Include="..\..\src\StatusTypeDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\StreamSplitter.cpp" />
+    <ClCompile Include="..\..\src\StreetNameDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\StreetSuffixDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\StringSplitter.cpp" />
+    <ClCompile Include="..\..\src\TaxableAccountNameDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\TaxRateCountryDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\TaxRateFile.cpp" />
+    <ClCompile Include="..\..\src\TaxRateDivisionDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\TextFileSplitter.cpp" />
+    <ClCompile Include="..\..\src\TradeTypeDataFileRecord.cpp" />
+    <ClCompile Include="..\..\src\Utilities.cpp" />
+    <ClCompile Include="..\..\src\ZipCodeDataFileRecord.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Utilities\prj\VS2010\EGenUtilities.vcxproj">
+      <Project>{c83aaab7-c52e-4457-aa88-2c5ab3a8a7b7}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>EGenInputFiles</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\lib\$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>..\..\obj\$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\lib\$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>..\..\obj\$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../inc; ../../../Utilities/inc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../inc; ../../../Utilities/inc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

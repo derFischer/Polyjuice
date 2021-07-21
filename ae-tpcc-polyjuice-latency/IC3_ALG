@@ -1,0 +1,47 @@
+Execution t_i, p_i
+
+Wait Phase:
+
+1.check all entries in wait queue
+
+  for all <t_j, p_j> in wait_queue
+      wait_on(t_j, p_j);
+
+
+2. check all entries in dep queue
+
+  for all <t_j> in dep_queue
+      if exist C(p_j, p_i) = 1 
+	  wait_on(t_j, p_j);
+
+
+Execute Phase:
+
+1. access tuple
+
+  <d_t, p_k> = tuple.last_txn
+	 	
+2. update dep queue
+	
+  dep_queue.add(d_t)
+
+3. update wait queue
+
+  adapt_wait_queue(d_t)
+
+
+functions:
+
+wait_on(t_j, p_j):
+  if(t_j.cur < p_j)
+  	wait;
+  adapt_wait_queue(y_j)
+
+
+adapt_wait_queue(p_j)
+	if(C(t_j->cur, this) == 0
+		&& t_j->cur < next_c_p with this)
+	  wait_queue.add(t_j, p_j)
+
+
+

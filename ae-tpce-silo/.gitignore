@@ -1,0 +1,11 @@
+*.csv
+*.log
+test.sh
+*.o
+*.swp
+*.heap
+*.so
+core
+tags
+config.mk
+out-*

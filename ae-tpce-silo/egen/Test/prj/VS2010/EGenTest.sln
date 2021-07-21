@@ -1,0 +1,64 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenTester", "EGenTester.vcxproj", "{3750CDBA-1619-4329-AD49-380FC480B3A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9E04641B-DFAF-45B4-9907-9C9A20C233C8} = {9E04641B-DFAF-45B4-9907-9C9A20C233C8}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenTestCommonLib", "EGenTestCommonLib.vcxproj", "{25E63029-9616-48EF-8D92-9D7178E03E60}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenUtilities", "..\..\..\Utilities\prj\VS2010\EGenUtilities.vcxproj", "{C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenUtilitiesTestLib", "..\..\..\Utilities\Test\prj\VS2010\EGenUtilitiesTestLib.vcxproj", "{381BCD8F-1EBB-49B8-AB7C-34EBB1D4769D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{65E1F3FF-283A-425E-A5CC-CD2E0C725E65}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenInputFiles", "..\..\..\InputFiles\prj\VS2010\EGenInputFiles.vcxproj", "{F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7} = {C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenInputFilesTestLib", "..\..\..\InputFiles\Test\prj\VS2010\EGenInputFilesTestLib.vcxproj", "{9E04641B-DFAF-45B4-9907-9C9A20C233C8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25E63029-9616-48EF-8D92-9D7178E03E60} = {25E63029-9616-48EF-8D92-9D7178E03E60}
+		{F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A} = {F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3750CDBA-1619-4329-AD49-380FC480B3A1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3750CDBA-1619-4329-AD49-380FC480B3A1}.Debug|Win32.Build.0 = Debug|Win32
+		{3750CDBA-1619-4329-AD49-380FC480B3A1}.Release|Win32.ActiveCfg = Release|Win32
+		{3750CDBA-1619-4329-AD49-380FC480B3A1}.Release|Win32.Build.0 = Release|Win32
+		{25E63029-9616-48EF-8D92-9D7178E03E60}.Debug|Win32.ActiveCfg = Debug|Win32
+		{25E63029-9616-48EF-8D92-9D7178E03E60}.Debug|Win32.Build.0 = Debug|Win32
+		{25E63029-9616-48EF-8D92-9D7178E03E60}.Release|Win32.ActiveCfg = Release|Win32
+		{25E63029-9616-48EF-8D92-9D7178E03E60}.Release|Win32.Build.0 = Release|Win32
+		{C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7}.Debug|Win32.Build.0 = Debug|Win32
+		{C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7}.Release|Win32.ActiveCfg = Release|Win32
+		{C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7}.Release|Win32.Build.0 = Release|Win32
+		{381BCD8F-1EBB-49B8-AB7C-34EBB1D4769D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{381BCD8F-1EBB-49B8-AB7C-34EBB1D4769D}.Debug|Win32.Build.0 = Debug|Win32
+		{381BCD8F-1EBB-49B8-AB7C-34EBB1D4769D}.Release|Win32.ActiveCfg = Release|Win32
+		{381BCD8F-1EBB-49B8-AB7C-34EBB1D4769D}.Release|Win32.Build.0 = Release|Win32
+		{F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A}.Debug|Win32.Build.0 = Debug|Win32
+		{F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A}.Release|Win32.ActiveCfg = Release|Win32
+		{F4EBEEA8-F4FD-42BC-85FD-611DD96FC56A}.Release|Win32.Build.0 = Release|Win32
+		{9E04641B-DFAF-45B4-9907-9C9A20C233C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9E04641B-DFAF-45B4-9907-9C9A20C233C8}.Debug|Win32.Build.0 = Debug|Win32
+		{9E04641B-DFAF-45B4-9907-9C9A20C233C8}.Release|Win32.ActiveCfg = Release|Win32
+		{9E04641B-DFAF-45B4-9907-9C9A20C233C8}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

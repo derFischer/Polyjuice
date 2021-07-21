@@ -1,0 +1,156 @@
+ifndef EGEN_INPUT_FILES_TEST_MAKEFILE_INCLUDED
+EGEN_INPUT_FILES_TEST_MAKEFILE_INCLUDED := true
+
+#
+# EGenInputFilesTest Library Makefile - Include File
+#
+# This file is used to build the EGenInputFilesTest Library. It is intended to
+# be included in another makefile that provides the required infrastructure
+# as outlined below.
+#
+
+################################################################################
+#
+# Redquired Infrastructure
+#
+# EGenInputFilesTest_ROOT	:=	{relative location of Test directory}
+#				NOTE: based on directory where the including 
+#				makefile is located
+#
+# CXX			:=	{your C++ compiler}
+# CPPFLAGS		:=	{your C PreProcessor flags}
+# DEPFLAGS		:=	{your flag to generate dependency info}
+# CXXFLAGS		:=	{your C++ compiler flags}
+# LDFLAGS		:=	{your linker flags}
+# AR			:=	{your archive/library maintainer}
+# ARFLAGS		:=	{your archiver flags}
+# RM			:=	{your command to remove a file}
+#
+################################################################################
+
+#
+# Project layout
+#
+EGenInputFilesTest_PRJ	:= $(EGenInputFilesTest_ROOT)/prj
+EGenInputFilesTest_INC	:= $(EGenInputFilesTest_ROOT)/inc
+EGenInputFilesTest_SRC	:= $(EGenInputFilesTest_ROOT)/src
+EGenInputFilesTest_OBJ	:= $(EGenInputFilesTest_ROOT)/obj
+EGenInputFilesTest_LIB	:= $(EGenInputFilesTest_ROOT)/lib
+EGenInputFilesTest_BIN	:= $(EGenInputFilesTest_ROOT)/bin
+
+#
+# File-type based search paths
+#
+vpath	%.h	$(EGenInputFilesTest_INC)
+vpath	%.cpp	$(EGenInputFilesTest_SRC)
+vpath	%.o	$(EGenInputFilesTest_OBJ)
+vpath	%.d	$(EGenInputFilesTest_OBJ)
+vpath	%.a	$(EGenInputFilesTest_LIB)
+
+#
+# Project components
+#
+EGenInputFilesTestSrcsNames	:=	AreaCodeDataFileRecordTestCases.cpp \
+					BucketedDataFileTestCases.cpp \
+					ChargeDataFileRecordTestCases.cpp \
+					CommissionRateDataFileRecordTestCases.cpp \
+					CompanyCompetitorDataFileRecordTestCases.cpp \
+					CompanyCompetitorFileTestCases.cpp \
+					CompanyDataFileRecordTestCases.cpp \
+					CompanyFileTestCases.cpp \
+					CompanySPRateDataFileRecordTestCases.cpp \
+					DataFileManagerTestCases.cpp \
+					DataFileTestCases.cpp \
+					EGenInputFilesTester.cpp \
+					EGenInputFilesTestSuite.cpp \
+					ExchangeDataFileRecordTestCases.cpp \
+					FemaleFirstNameDataFileRecordTestCases.cpp \
+					IndustryDataFileRecordTestCases.cpp \
+					LastNameDataFileRecordTestCases.cpp \
+					MaleFirstNameDataFileRecordTestCases.cpp \
+					NewsDataFileRecordTestCases.cpp \
+					NonTaxableAccountNameDataFileRecordTestCases.cpp \
+					SectorDataFileRecordTestCases.cpp \
+					SecurityDataFileRecordTestCases.cpp \
+					SecurityFileTestCases.cpp \
+					StatusTypeDataFileRecordTestCases.cpp \
+					StreamSplitterTestCases.cpp \
+					StreetNameDataFileRecordTestCases.cpp \
+					StreetSuffixDataFileRecordTestCases.cpp \
+					StringSplitterTestCases.cpp \
+					TaxableAccountNameDataFileRecordTestCases.cpp \
+					TaxRateCountryDataFileRecordTestCases.cpp \
+					TaxRateDivisionDataFileRecordTestCases.cpp \
+					TaxRateFileTestCases.cpp \
+					TextFileSplitterTestCases.cpp \
+					TradeTypeDataFileRecordTestCases.cpp \
+					WeightedDataFileTestCases.cpp \
+					ZipCodeDataFileRecordTestCases.cpp
+
+EGenInputFilesTestSrcs	:=	$(addprefix \
+				$(EGenInputFilesTest_SRC)/, \
+				$(EGenInputFilesTestSrcsNames))
+
+EGenInputFilesTestDepsNames	:=	$(EGenInputFilesTestSrcsNames:.cpp=.d)
+
+EGenInputFilesTestDeps	:=	$(addprefix \
+				$(EGenInputFilesTest_OBJ)/, \
+				$(EGenInputFilesTestDepsNames))
+
+EGenInputFilesTestObjsNames	:=	$(EGenInputFilesTestSrcsNames:.cpp=.o)
+
+EGenInputFilesTestObjs	:=	$(addprefix \
+				$(EGenInputFilesTest_OBJ)/, \
+				$(EGenInputFilesTestObjsNames))
+
+EGenInputFilesTestLibName	:=	EGenInputFilesTest
+
+EGenInputFilesTestLib	:=	$(addprefix \
+				$(EGenInputFilesTest_LIB)/lib, \
+				$(EGenInputFilesTestLibName).a)
+
+EGenInputFilesTestAll	:=	$(EGenInputFilesTestTargetModifier)all
+EGenInputFilesTestClean	:=	$(EGenInputFilesTestTargetModifier)clean
+
+#
+# Automatically track dependencies
+#
+$(EGenInputFilesTest_OBJ)/%.d : $(EGenInputFilesTest_SRC)/%.cpp
+	@set -e; rm -f $@; \
+	(cd $(EGenInputFilesTest_PRJ); \
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) ../src/$(notdir $<) \
+		> ../obj/$(notdir $@).$$$$; \
+	); \
+	sed 's,\($(basename $(notdir $*))\).o[ :]*,\1.o $(notdir $@) : ,g' \
+		< $@.$$$$ > $@; \
+	rm -f $@.$$$$; \
+	echo -e \\t$$\(CXX\) -c $$\(CPPFLAGS\) $$\(CXXFLAGS\) \
+		$$\< -o $$\(EGenInputFilesTest_OBJ\)/\$$\@ >> $@
+
+#
+# Default goal
+#
+$(EGenInputFilesTestAll)	:	$(EGenInputFilesTestLib)
+
+#
+# Library targets
+#
+EGenInputFilesTestLib	:	$(EGenInputFilesTestLib)
+
+$(EGenInputFilesTestLib)	:	$(EGenInputFilesTestObjsNames)
+	$(AR) $(ARFLAGS) $(EGenInputFilesTestLib) $(EGenInputFilesTestObjs)
+
+#
+# Utility targets
+#
+$(EGenInputFilesTestClean) :
+	$(RM) $(EGenInputFilesTestDeps); \
+	$(RM) $(EGenInputFilesTestObjs); \
+	$(RM) $(EGenInputFilesTestLib)
+
+#
+# Dependency and object targets
+#
+include $(EGenInputFilesTestDeps)
+
+endif #EGEN_INPUT_FILES_TEST_MAKEFILE_INCLUDED

@@ -1,0 +1,40 @@
+txn buffer size:
+32
+------------------------low contention------------------------
+access decision:
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+wait decisions(before access):
+333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+wait decisions(before commit piece):
+333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+wait access info(txn execution):
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c
+piece end decision:
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+wait decisions(txn final commit):
+3333
+wait access info(txn final commit):
+c c c c c c c c c c c c c c c c
+whether use const backoff bound:
+0000
+different txn type's backoff bound:
+31 31 31 31
+------------------------high contention------------------------
+access decision:
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+wait decisions(before access):
+333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+wait decisions(before commit piece):
+333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+wait access info(txn execution):
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c
+piece end decision:
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+wait decisions(txn final commit):
+3333
+wait access info(txn final commit):
+c c c c c c c c c c c c c c c c
+whether use const backoff bound:
+0000
+different txn type's backoff bound:
+31 31 31 31
