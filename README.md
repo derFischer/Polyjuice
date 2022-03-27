@@ -395,3 +395,9 @@ ae-tpcc-polyjuice-rl/training/saved_model/
 After the training, you can `cd` into corresponding folders and get the training logs.
 
 
+# Publication
+[Polyjuice: High-Performance Transactions via Learned Concurrency Control](https://www.usenix.org/system/files/osdi21-wang-jiachen.pdf).
+
+Jiachen Wang*, Ding Ding*, Huan Wang, Conrad Christensen, Zhaoguo Wang, Haibo Chen, and Jinyang Li. 
+
+Operating Systems Design and Implementation (OSDI), 2021
