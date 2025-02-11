@@ -24,7 +24,7 @@ do
         --random-branch 4 \
         --mutate-rate 0.05 \
         --nworkers $threads \
-        --pickup-policy training/input-RL-ic3-tpcc.txt \
+        --pickup-policy training/input-RL-ic3-new-tpcc.txt \
         --expr-name "EA-Polyjuice-"
 done
 cd ..
@@ -52,7 +52,7 @@ do
     --random-branch 0 \
     --mutate-rate 0.05 \
     --nworkers $threads \
-    --pickup-policy training/input-RL-ic3-tpcc.txt \
+    --pickup-policy training/input-RL-ic3-new-tpcc.txt \
     --expr-name "RL-"
 done
 cd ..
